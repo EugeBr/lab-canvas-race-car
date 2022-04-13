@@ -30,7 +30,7 @@ class Background {
                 this.canvas.width,
                 this.canvas.height
                 );
-        }
+        } //*its drawn twise to get ilution of motion
     }
 
     move() {

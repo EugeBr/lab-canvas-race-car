@@ -1,14 +1,14 @@
 
   document.getElementById('start-button').addEventListener('click', startGame);
+  //*create event listener to start the game
   const gameIntroElement = document.querySelector('.game-intro');
   const gameOverElement = document.querySelector('.game-over');
-  const restartButton = gameOverElement
- .querySelector('button')
- .addEventListener('click', startGame);
+  const restartButton = gameOverElement.querySelector('button').addEventListener('click', startGame);
+ //*get all elements using DOM
 
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
-
+//*create canvas
   let background, 
   car, 
   obstacles = [], 
@@ -21,10 +21,11 @@
   function startGame() {
     gameOverElement.classList.add('hidden');
     gameIntroElement.classList.add('hidden');
+    //*hide the rest of the element when the game starts
     reset();
     background = new Background(canvas, ctx, moveSpeed);
     car = new Car(canvas, ctx);
-    
+    //*create background and car
     createEventListeners();
     update();
   }
@@ -35,7 +36,7 @@
       if (frameCounter % 10 === 0) {
         score += 3;
       }
-      if (frameCounter === 60){
+      if (frameCounter === 30){
         obstacles.push(new Obstacle(canvas, ctx, moveSpeed));
         frameCounter = 0;
       }
@@ -49,7 +50,7 @@
       drawScore();
 
       if (collitionBetweenCarAndObstacle()) {
-        gameIntroElement.classList.remove('hidden');
+        gameOverElement.classList.remove('hidden');
         reset();
         return;
       }
@@ -97,7 +98,8 @@
     ctx.fillText(`Score: ${score}`, 20, 50);
   }
 
-  function reset() {
+  function reset() { 
+    //*to clear interval and set all valeus to starting point
   cancelAnimationFrame(intervalId);
   background = null; 
   car = null;

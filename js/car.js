@@ -3,7 +3,7 @@ class Car {
         this.canvas = canvas;
         this.ctx = ctx;
         this.image = null;
-        this.carSpeed = 2;
+        this.carSpeed = 10;
         this.width = 50;
         this.height = 100;
 
